@@ -41,8 +41,7 @@ class SocialResource extends Resource
                 ->url(),
 
                 TextInput::make('icon')
-                ->url()
-                ->hint('Use a URL to an SVG or PNG image.')
+                ->hint('Heroicon or SVG, PNG url.')
             ]);
     }
 
