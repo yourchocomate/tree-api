@@ -10,6 +10,9 @@ class ApiController extends Controller
 {
     public function index(Profile $profile)
     {
+        $socials = $profile->user->socials()->where('status', 1)->get();
+        $portfolios = $profile->user->portfolios()->where('status', 1)->get();
+        
         return response()->json([
             'user' => [
                 'name' => $profile->user->name,
@@ -19,8 +22,8 @@ class ApiController extends Controller
                 'avater' => Storage::disk('public')->url($profile->avater),
             ],
             'handles' => [
-                'social' => $profile->user->socials,
-                'portfolio' => $profile->user->portfolios,
+                'social' => $socials,
+                'portfolio' => $portfolios,
             ]
         ], 200);
     }
