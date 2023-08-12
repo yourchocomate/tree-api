@@ -1,66 +1,111 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# My Tree API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Open source project to create your own portfolio api and backend.
 
-## About Laravel
+Go to [https://tree.yourchocomate.one](https://tree.yourchocomate.one) to register and create your own portfolio api without doing any coding or hosting.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## About this project
+
+This project is a simple backend and api for your portfolio database. You can add, edit, delete and list your projects and skills. Just clone this repository and follow the instructions below.
+
+## Used technologies
+
+This project was developed using laravel 10 and the following technologies of the laravel ecosystem:
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).
 - Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
 - Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
 - Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Fillament PHP Admin Panel.
+- Livewire for dynamic components.
+- Tailwind CSS for styling.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Installation
 
-## Learning Laravel
+### Requirements
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- PHP 8.1 or higher
+- Composer
+- MySQL 8.0 or higher
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Steps
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. Clone this repository
+2. Run `composer install`
+3. Create a database for this project
+4. Copy the `.env.example` file to `.env` and fill the database information
+5. Run migrations with `php artisan migrate`
 
-## Laravel Sponsors
+## Usage
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- Run `php artisan serve` to start the server
+- Access the admin panel at `http://localhost:8000/admin`
+- Register a new user and login
 
-### Premium Partners
+## API Endpoints
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+- `GET /api/handle/{your-handle}` - Get your profile information with projects and skills
 
-## Contributing
+### Api Response
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```json
+{
+  "user": {
+    "name": "Your Name",
+    "email": "youremail@domain.com",
+    "handle": "yourname",
+    "bio": "Here is your bio",
+    "avater": "https://your-avater.com/avater.png",
+  },
+  "handles": {
+    "skill" : [
+        {
+            "id": 1,
+            "label": "PHP",
+            "icon": "https://laravel.com/img/favicon/favicon.ico", // or hero icons name. example: s-arrow-right
+            "tooltip": "Click me",
+            "description": "<p>PHP is a popular general-purpose scripting language that is especially suited to web development.</p>",
+            "created_at": "2023-08-06T14:02:59.000000Z"
+        }
+    ],
+    "social": [
+      {
+        "id": 1,
+        "name": "Twitter",
+        "url": "https://twitter.com/username",
+        "icon": "s-twitter", // or png,svg url
+        "created_at": "2023-08-06T14:02:59.000000Z"
+      }
+    ],
+    "portfolio": [
+      {
+        "id": 1,
+        "label": "Your Project",
+        "icon": "https://your-project.com/logo.png", // or hero icons name. example: s-arrow-right
+        "tooltip": "Your project motto",
+        "description": "<p>Description</p>",
+        "url": "https://your-project.com/",
+        "created_at": "2023-08-06T14:31:15.000000Z"
+      }
+    ]
+  }
+}
+```
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License - see the  [MIT license](https://opensource.org/licenses/MIT) file for details
+
+## Contributing
+
+1. Fork this repository
+2. Create a new branch with your changes: `git checkout -b my-feature`
+3. Save your changes and create a commit message telling you what you did: `git commit -m "feature: My new feature"`
+4. Submit your changes: `git push origin my-feature`
+5. Open a pull request
+
+## Contact
+
+- Author: [Habibur Rahman](mailto:yourchocomate@gmail.com)
+
