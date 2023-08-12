@@ -10,6 +10,7 @@ use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\Action;
 use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\Toggle;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\RichEditor;
@@ -49,7 +50,10 @@ class PortfolioResource extends Resource
 
                 TextInput::make('url')
                 ->required()
-                ->url()
+                ->url(),
+
+                Toggle::make('status')
+                ->required()
             ]);
     }
 

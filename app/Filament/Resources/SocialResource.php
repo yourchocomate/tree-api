@@ -10,6 +10,7 @@ use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\Action;
 use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\Toggle;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ToggleColumn;
@@ -41,7 +42,10 @@ class SocialResource extends Resource
                 ->url(),
 
                 TextInput::make('icon')
-                ->hint('Heroicon or SVG, PNG url.')
+                ->hint('Heroicon or SVG, PNG url.'),
+
+                Toggle::make('status')
+                ->required()
             ]);
     }
 
