@@ -77,4 +77,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(Social::class);
     }
+
+    /**
+     * Get the skills for the user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+
+    public function skills() : HasMany
+    {
+        return $this->hasMany(Skill::class);
+    }
 }
