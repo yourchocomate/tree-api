@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\SkillResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\SkillResource\RelationManagers;
+use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class SkillResource extends Resource
 {
@@ -41,9 +42,11 @@ class SkillResource extends Resource
                 TextInput::make('tooltip')
                 ->hint('This is the text that will appear when a user hovers over the portfolio item.'),
 
-                RichEditor::make('description')
-                ->columnSpan('full')
+                TinyEditor::make('description')
+                ->columnSpan("full")
+                ->minHeight(300)
                 ->fileAttachmentsDisk('public')
+                ->fileAttachmentsVisibility('public')
                 ->fileAttachmentsDirectory('attachments'),
 
                 TextInput::make('icon')

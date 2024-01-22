@@ -13,12 +13,12 @@ use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Toggle;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\RichEditor;
 use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\PortfolioResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\PortfolioResource\RelationManagers;
+use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class PortfolioResource extends Resource
 {
@@ -40,9 +40,11 @@ class PortfolioResource extends Resource
                 TextInput::make('tooltip')
                 ->hint('This is the text that will appear when a user hovers over the portfolio item.'),
 
-                RichEditor::make('description')
-                ->columnSpan('full')
+                TinyEditor::make('description')
+                ->columnSpan("full")
+                ->minHeight(300)
                 ->fileAttachmentsDisk('public')
+                ->fileAttachmentsVisibility('public')
                 ->fileAttachmentsDirectory('attachments'),
 
                 TextInput::make('icon')
