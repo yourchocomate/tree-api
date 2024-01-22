@@ -63,7 +63,7 @@ class PortfolioResource extends Resource
             ->columns([
                 TextColumn::make('label')
                 ->label("Name")
-                ->description(fn (Portfolio $pf) : string=> $pf->tooltip)
+                ->description(fn (Portfolio $pf) : string | null => $pf->tooltip)
                 ->searchable(),
 
                 TextColumn::make('url')

@@ -58,7 +58,7 @@ class SocialResource extends Resource
                 ->searchable(),
 
                 TextColumn::make('url')
-                ->url(fn (Social $sc) : string => $sc->url)
+                ->url(fn (Social $sc) : string | null => $sc->url)
                 ->openUrlInNewTab(),
 
                 TextColumn::make('created_at')

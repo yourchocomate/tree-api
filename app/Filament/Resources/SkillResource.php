@@ -64,11 +64,11 @@ class SkillResource extends Resource
             ->columns([
                 TextColumn::make('label')
                 ->label("Name")
-                ->description(fn (Skill $sk) : string=> $sk->tooltip)
+                ->description(fn (Skill $sk) : string | null => $sk->tooltip)
                 ->searchable(),
 
                 TextColumn::make('url')
-                ->url(fn (Skill $sk) : string => $sk->url)
+                ->url(fn (Skill $sk) : string | null => $sk->url)
                 ->openUrlInNewTab(),
 
                 TextColumn::make('created_at')

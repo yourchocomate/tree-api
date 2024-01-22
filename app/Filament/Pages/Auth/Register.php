@@ -40,10 +40,6 @@ class Register extends BaseRegister
 
         $user->profile()->create();
 
-        app()->bind(
-            \Illuminate\Auth\Listeners\SendEmailVerificationNotification::class,
-            \Filament\Listeners\Auth\SendEmailVerificationNotification::class,
-        );
         event(new Registered($user));
 
         Filament::auth()->login($user);
